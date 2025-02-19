@@ -1,0 +1,77 @@
+[
+  {
+    "Villa_Number": 101,
+    "VillaId": 1,
+    "SpecialDetalis": "Corner unit with extra security."
+  },
+  {
+    "Villa_Number": 102,
+    "VillaId": 2, 
+    "SpecialDetalis": "Features a private garden."
+  },
+  {
+    "Villa_Number": 103,
+    "VillaId": 3,
+    "SpecialDetalis": "Luxurious pool view."
+  },
+  {
+    "Villa_Number": 104,
+    "VillaId": 4,
+    "SpecialDetalis": "Beachfront access with sea view."
+  },
+  {
+    "Villa_Number": 105,
+    "VillaId": 5,
+    "SpecialDetalis": "Sunset views from the balcony."
+  },
+  {
+    "Villa_Number": 106,
+    "VillaId": 6,
+    "SpecialDetalis": "Near the coral reef area."
+  },
+  {
+    "Villa_Number": 107,
+    "VillaId": 7,
+    "SpecialDetalis": "Tranquil oasis with lush landscaping."
+  },
+  {
+    "Villa_Number": 108,
+    "VillaId": 8,
+    "SpecialDetalis": "Spacious villa with modern decor."
+  },
+  {
+    "Villa_Number": 109,
+    "VillaId": 9,
+    "SpecialDetalis": "Retreat with panoramic sea views."
+  },
+  {
+    "Villa_Number": 110,
+    "VillaId": 10,
+    "SpecialDetalis": "Charming villa with azure surroundings."
+  },
+  {
+    "Villa_Number": 111,
+    "VillaId": 11,
+    "SpecialDetalis": "Dream villa with vibrant local charm."
+  },
+  {
+    "Villa_Number": 112,
+    "VillaId": 12,
+    "SpecialDetalis": "Cozy villa close to the sea."
+  },
+  {
+    "Villa_Number": 113,
+    "VillaId": 13,
+    "SpecialDetalis": "Exquisite villa with a paradise-like setting."
+  },
+  {
+    "Villa_Number": 114,
+    "VillaId": 14,
+    "SpecialDetalis": "Mystic villa with unique decor."
+  },
+  {
+    "Villa_Number": 115,
+    "VillaId": 15,
+    "SpecialDetalis": "Located in the heart of the golden sands."
+  }
+]

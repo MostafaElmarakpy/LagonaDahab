@@ -1,0 +1,122 @@
+[
+  {
+    "Name": "Royal Villa",
+    "Description": "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Located between Dahab and El Gouna.",
+    "ImageUrl": "https://source.unsplash.com/600x400/?villa,egypt",
+    "Occupancy": 4,
+    "Price": 200,
+    "Sqft": 550
+  },
+  {
+    "Name": "Premium Pool Villa",
+    "Description": "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Featuring a pool with stunning Red Sea views.",
+    "ImageUrl": "https://source.unsplash.com/600x401/?villa,pool,egypt",
+    "Occupancy": 4,
+    "Price": 300,
+    "Sqft": 550
+  },
+  {
+    "Name": "Luxury Pool Villa",
+    "Description": "Fusce 11 tincidunt maximus leo, sed scelerisque massa auctor sit amet. Ideal for lavish getaways with luxury amenities.",
+    "ImageUrl": "https://source.unsplash.com/600x402/?luxury,villa,egypt",
+    "Occupancy": 4,
+    "Price": 400,
+    "Sqft": 750
+  },
+  {
+    "Name": "Dahab Beachfront Villa",
+    "Description": "A serene beachfront villa in Dahab with panoramic views of the Red Sea, perfect for family vacations.",
+    "ImageUrl": "https://source.unsplash.com/600x403/?villa,beach,dahab",
+    "Occupancy": 6,
+    "Price": 250,
+    "Sqft": 600
+  },
+  {
+    "Name": "Sunset Villa Dahab",
+    "Description": "Experience breathtaking sunsets in Dahab from this elegant villa featuring modern amenities and cozy interiors.",
+    "ImageUrl": "https://source.unsplash.com/600x404/?villa,sunset,dahab",
+    "Occupancy": 5,
+    "Price": 220,
+    "Sqft": 580
+  },
+  {
+    "Name": "Coral Reef Villa",
+    "Description": "Nestled near vibrant coral reefs in Dahab, this villa offers a unique underwater adventure combined with luxury living.",
+    "ImageUrl": "https://source.unsplash.com/600x405/?villa,coral,dahab",
+    "Occupancy": 4,
+    "Price": 230,
+    "Sqft": 590
+  },
+  {
+    "Name": "El Gouna Oasis",
+    "Description": "A luxurious villa in El Gouna offering a private oasis with a pool, lush gardens, and modern comforts.",
+    "ImageUrl": "https://source.unsplash.com/600x406/?villa,elgouna,oasis",
+    "Occupancy": 6,
+    "Price": 350,
+    "Sqft": 700
+  },
+  {
+    "Name": "Gouna Grand Villa",
+    "Description": "Experience grandeur in El Gouna with this spacious villa featuring elegant design and top-tier facilities.",
+    "ImageUrl": "https://source.unsplash.com/600x407/?villa,luxury,elgouna",
+    "Occupancy": 8,
+    "Price": 400,
+    "Sqft": 800
+  },
+  {
+    "Name": "Red Sea Retreat",
+    "Description": "Located along the pristine Red Sea coast, this retreat offers modern comforts and scenic views ideal for a relaxing getaway.",
+    "ImageUrl": "https://source.unsplash.com/600x408/?villa,redsea",
+    "Occupancy": 4,
+    "Price": 320,
+    "Sqft": 650
+  },
+  {
+    "Name": "Azure Villa",
+    "Description": "Enjoy the azure waters and tranquil environment of the Red Sea at this charming villa that promises a serene escape.",
+    "ImageUrl": "https://source.unsplash.com/600x409/?villa,azure,egypt",
+    "Occupancy": 4,
+    "Price": 280,
+    "Sqft": 600
+  },
+  {
+    "Name": "Dahab Dream Villa",
+    "Description": "A dream villa in Dahab designed for relaxation and adventure, featuring modern decor and vibrant local charm.",
+    "ImageUrl": "https://source.unsplash.com/600x410/?villa,dream,dahab",
+    "Occupancy": 5,
+    "Price": 240,
+    "Sqft": 580
+  },
+  {
+    "Name": "Sea Breeze Villa",
+    "Description": "Let the refreshing sea breeze rejuvenate you in this cozy villa located near Dahab's picturesque shores.",
+    "ImageUrl": "https://source.unsplash.com/600x411/?villa,sea,breeze",
+    "Occupancy": 4,
+    "Price": 260,
+    "Sqft": 620
+  },
+  {
+    "Name": "El Gouna Paradise",
+    "Description": "Indulge in paradise with this exquisite villa in El Gouna, offering luxurious amenities and breathtaking Red Sea views.",
+    "ImageUrl": "https://source.unsplash.com/600x412/?villa,paradise,elgouna",
+    "Occupancy": 6,
+    "Price": 370,
+    "Sqft": 720
+  },
+  {
+    "Name": "Mystic Red Villa",
+    "Description": "A mystic villa that captures the essence of the Red Sea, blending traditional charm with modern luxury for a unique stay.",
+    "ImageUrl": "https://source.unsplash.com/600x413/?villa,mystic,redsea",
+    "Occupancy": 7,
+    "Price": 310,
+    "Sqft": 680
+  },
+  {
+    "Name": "Golden Sands Villa",
+    "Description": "Located in the golden sands region between Dahab and El Gouna, this villa offers an authentic Egyptian resort experience.",
+    "ImageUrl": "https://source.unsplash.com/600x414/?villa,goldensands,dahab",
+    "Occupancy": 4,
+    "Price": 290,
+    "Sqft": 600
+  }
+]

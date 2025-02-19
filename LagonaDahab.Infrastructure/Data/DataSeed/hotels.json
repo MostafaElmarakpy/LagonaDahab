@@ -1,0 +1,202 @@
+[
+    {
+        "Id": 1,
+        "Name": "Blue Waters Resort Dahab",
+        "Description": "Boutique beach resort offering stunning views of the Red Sea, with direct access to world-renowned diving and snorkeling sites.",
+        "ImageUrl": "https://source.unsplash.com/600x400/?hotel,redsea,dahab,beach",
+        "Rooms": 45,
+        "Price": 150,
+        "StarRating": 4,
+        "Location": "Dahab"
+    },
+    {
+        "Id": 2,
+        "Name": "Sinai Mountain Lodge",
+        "Description": "Eco-friendly hotel nestled in the mountains, offering breathtaking views and traditional Bedouin hospitality.",
+        "ImageUrl": "https://source.unsplash.com/600x401/?hotel,sinaimountains,desert,ecolodge",
+        "Rooms": 30,
+        "Price": 120,
+        "StarRating": 3,
+        "Location": "Saint Catherine"
+    },
+    {
+        "Id": 3,
+        "Name": "Red Sea Luxury Collection",
+        "Description": "Opulent five-star hotel in El Gouna, featuring multiple pools, private beaches, and world-class amenities.",
+        "ImageUrl": "https://source.unsplash.com/600x402/?hotel,elgouna,luxury,resort",
+        "Rooms": 120,
+        "Price": 350,
+        "StarRating": 5,
+        "Location": "El Gouna"
+    },
+    {
+        "Id": 4,
+        "Name": "Coral Coast Resort",
+        "Description": "Intimate resort offering exceptional diving experiences and direct access to some of the most pristine coral reefs in the Red Sea.",
+        "ImageUrl": "https://source.unsplash.com/600x403/?hotel,redsea,coralreef,diving",
+        "Rooms": 40,
+        "Price": 180,
+        "StarRating": 4,
+        "Location": "Nuweiba"
+    },
+    {
+        "Id": 5,
+        "Name": "Desert Sun Hotel",
+        "Description": "Modern hotel blending contemporary design with traditional Bedouin elements, located in the heart of the Sinai Peninsula.",
+        "ImageUrl": "https://source.unsplash.com/600x404/?hotel,sinai,desert,moderndesign",
+        "Rooms": 55,
+        "Price": 130,
+        "StarRating": 3,
+        "Location": "Dahab"
+    },
+    {
+        "Id": 6,
+        "Name": "Hurghada Marina Palace",
+        "Description": "Luxurious waterfront hotel offering panoramic views of the marina, with easy access to local attractions and water sports.",
+        "ImageUrl": "https://source.unsplash.com/600x405/?hotel,hurghada,marina,waterfront",
+        "Rooms": 80,
+        "Price": 250,
+        "StarRating": 5,
+        "Location": "Hurghada"
+    },
+    {
+        "Id": 7,
+        "Name": "Turquoise Waters Resort",
+        "Description": "Family-friendly resort with multiple pools, kids' club, and comprehensive entertainment programs.",
+        "ImageUrl": "https://source.unsplash.com/600x406/?hotel,sharmelsheikh,resort,familyhotel",
+        "Rooms": 100,
+        "Price": 200,
+        "StarRating": 4,
+        "Location": "Sharm El Sheikh"
+    },
+    {
+        "Id": 8,
+        "Name": "Windsurf Paradise Hotel",
+        "Description": "Specialized resort catering to water sports enthusiasts, with professional-grade equipment and expert instructors.",
+        "ImageUrl": "https://source.unsplash.com/600x407/?hotel,safaga,watersports,windsurfing",
+        "Rooms": 35,
+        "Price": 140,
+        "StarRating": 3,
+        "Location": "Safaga"
+    },
+    {
+        "Id": 9,
+        "Name": "Oasis Wellness Retreat",
+        "Description": "Tranquil hotel focusing on holistic wellness, offering spa treatments, yoga classes, and meditation spaces.",
+        "ImageUrl": "https://source.unsplash.com/600x408/?hotel,dahab,wellness,spa",
+        "Rooms": 50,
+        "Price": 220,
+        "StarRating": 4,
+        "Location": "Dahab"
+    },
+    {
+        "Id": 10,
+        "Name": "Marine Life Resort",
+        "Description": "Eco-conscious hotel with marine biology programs, offering educational experiences and conservation activities.",
+        "ImageUrl": "https://source.unsplash.com/600x409/?hotel,rasabugalum,marine,ecohotel",
+        "Rooms": 60,
+        "Price": 190,
+        "StarRating": 4,
+        "Location": "Ras Abu Galum"
+    },
+    {
+        "Id": 11,
+        "Name": "Royal Gateway Hotel",
+        "Description": "Elegant hotel combining modern luxury with traditional Egyptian hospitality, located in the vibrant El Gouna district.",
+        "ImageUrl": "https://source.unsplash.com/600x410/?hotel,elgouna,luxury,egyptianstyle",
+        "Rooms": 90,
+        "Price": 280,
+        "StarRating": 5,
+        "Location": "El Gouna"
+    },
+    {
+        "Id": 12,
+        "Name": "Mountain View Inn",
+        "Description": "Cozy mountain hotel offering stunning views of the Sinai landscape, perfect for nature lovers and adventure seekers.",
+        "ImageUrl": "https://source.unsplash.com/600x411/?hotel,saintcatherine,mountains,desert",
+        "Rooms": 25,
+        "Price": 110,
+        "StarRating": 3,
+        "Location": "Saint Catherine"
+    },
+    {
+        "Id": 13,
+        "Name": "Sunset Beach Resort",
+        "Description": "Beachfront resort known for its spectacular sunset views and comprehensive water activities.",
+        "ImageUrl": "https://source.unsplash.com/600x412/?hotel,hurghada,sunset,beachfront",
+        "Rooms": 75,
+        "Price": 230,
+        "StarRating": 4,
+        "Location": "Hurghada"
+    },
+    {
+        "Id": 14,
+        "Name": "Bedouin Heritage Hotel",
+        "Description": "Unique accommodation showcasing authentic Bedouin culture, with traditional tents and modern amenities.",
+        "ImageUrl": "https://source.unsplash.com/600x413/?hotel,nuweiba,bedouin,traditional",
+        "Rooms": 40,
+        "Price": 100,
+        "StarRating": 3,
+        "Location": "Nuweiba"
+    },
+    {
+        "Id": 15,
+        "Name": "Reef Explorer Lodge",
+        "Description": "Specialized diving hotel with on-site dive center, offering courses for all levels and access to premier diving sites.",
+        "ImageUrl": "https://source.unsplash.com/600x414/?hotel,sharmelsheikh,diving,reefs",
+        "Rooms": 45,
+        "Price": 170,
+        "StarRating": 4,
+        "Location": "Sharm El Sheikh"
+    },
+    {
+        "Id": 16,
+        "Name": "Garden of Eden Resort",
+        "Description": "Lush green resort featuring exotic gardens, multiple swimming pools, and a serene atmosphere.",
+        "ImageUrl": "https://source.unsplash.com/600x415/?hotel,elgouna,gardens,resort",
+        "Rooms": 65,
+        "Price": 210,
+        "StarRating": 4,
+        "Location": "El Gouna"
+    },
+    {
+        "Id": 17,
+        "Name": "Cultural Crossroads Hotel",
+        "Description": "Boutique hotel celebrating the rich historical and cultural heritage of the Sinai Peninsula.",
+        "ImageUrl": "https://source.unsplash.com/600x416/?hotel,dahab,culture,historical",
+        "Rooms": 35,
+        "Price": 160,
+        "StarRating": 3,
+        "Location": "Dahab"
+    },
+    {
+        "Id": 18,
+        "Name": "Maritime Explorer Hotel",
+        "Description": "Modern hotel catering to sailing and maritime enthusiasts, with direct marina access and boat rental services.",
+        "ImageUrl": "https://source.unsplash.com/600x417/?hotel,hurghada,marina,sailing",
+        "Rooms": 50,
+        "Price": 240,
+        "StarRating": 4,
+        "Location": "Hurghada"
+    },
+    {
+        "Id": 19,
+        "Name": "Desert Rose Wellness Hotel",
+        "Description": "Comprehensive wellness destination offering holistic health programs, meditation retreats, and natural healing treatments.",
+        "ImageUrl": "https://source.unsplash.com/600x418/?hotel,saintcatherine,wellness,desert",
+        "Rooms": 40,
+        "Price": 200,
+        "StarRating": 4,
+        "Location": "Saint Catherine"
+    },
+    {
+        "Id": 20,
+        "Name": "Coastal Harmony Resort",
+        "Description": "Sustainable eco-resort focusing on environmental conservation and offering immersive nature experiences.",
+        "ImageUrl": "https://source.unsplash.com/600x419/?hotel,rasabugalum,eco,sustainable",
+        "Rooms": 55,
+        "Price": 190,
+        "StarRating": 4,
+        "Location": "Ras Abu Galum"
+    }
+]
