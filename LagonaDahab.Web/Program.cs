@@ -1,4 +1,6 @@
+using LagonaDahab.Application.Common.Interfaces;
 using LagonaDahab.Infrastructure.Data;
+using LagonaDahab.Infrastructure.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +12,8 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
+builder.Services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
+builder.Services.AddScoped<IVillaRepository, VillaRepository>();
 var app = builder.Build();
 
 #region Database Migration and Seeding

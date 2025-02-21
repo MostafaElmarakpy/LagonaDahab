@@ -8,14 +8,10 @@ using System.Threading.Tasks;
 
 namespace LagonaDahab.Application.Common.Interfaces
 {
-    public interface IVillaRepository
+    public interface IVillaRepository : IGenaricRepository<Villa>
     {
-        IEnumerable<Villa> GetAll(Expression<Func<Villa, bool>>? filter = null, string? includeProperty = null );
-        IEnumerable<Villa> Get(Expression<Func<Villa, bool>> filter , string? includeProperty = null );
-
-        void Add(Villa entity);
+ 
         void Update(Villa entity);
-        void Remove(Villa entity);
         void SaveChanges();
 
 
