@@ -1,6 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using LagonaDahab.Application.Common.Interfaces;
+using LagonaDahab.Infrastructure.Data;
+using LagonaDahab.Infrastructure.Repository;
 
 public class UnitOfWork : IUnitOfWork
 {
@@ -13,10 +15,6 @@ public class UnitOfWork : IUnitOfWork
         _context = context;
     }
 
-    public IGenaricRepository<T> Repository<T>() where T : class
-    {
-        // Implementation for generic repository
-    }
 
     public IVillaRepository Villa => _villaRepository ??= new VillaRepository(_context);
     public IVillaNumberRepository VillaNumber => _villaNumberRepository ??= new VillaNumberRepository(_context);
