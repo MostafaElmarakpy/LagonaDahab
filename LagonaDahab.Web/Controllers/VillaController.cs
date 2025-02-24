@@ -1,4 +1,5 @@
-﻿using LagonaDahab.Domain.Entities;
+﻿using LagonaDahab.Application.Common.Interfaces;
+using LagonaDahab.Domain.Entities;
 using LagonaDahab.Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,16 +7,16 @@ namespace LagonaDahab.Web.Controllers
 {
     public class VillaController : Controller
     {
-        private readonly ApplicationDbContext  _dbContext;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public VillaController(ApplicationDbContext dbContext)
+        public VillaController(IUnitOfWork unitOfWork)
         {
-            _dbContext = dbContext;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            var villas = _dbContext.Villas.ToList(); 
+            var villas = _unitOfWork.Villa.GetAll();
             return View(villas);
         }
         public IActionResult Create()
@@ -25,25 +26,25 @@ namespace LagonaDahab.Web.Controllers
         [HttpPost]
         public IActionResult Create(Villa villa)
         {
-            if (villa.Name==villa.Description)
+            if (villa.Name == villa.Description)
             {
                 ModelState.AddModelError("name", "the Description can't exactly match Name");
             }
             if (ModelState.IsValid)
             {
-                _dbContext.Villas.Add(villa);
-                _dbContext.SaveChanges();
+                _unitOfWork.Villa.Add(villa);
+                _unitOfWork.Villa.SaveChanges();
                 TempData["success"] = "The Villa has been Created Successfuly";
 
                 return RedirectToAction(nameof(Index));
             }
-                return View();
+            return View();
         }
 
         public IActionResult Update(int villaId)
         {
-            Villa? obj= _dbContext.Villas.FirstOrDefault(u=>u.Id ==villaId);
-            if(obj==null)
+            Villa? obj = _unitOfWork.Villa.Get(u => u.Id == villaId);
+            if (obj == null)
             {
                 return RedirectToAction("Error", "Home");
             }
@@ -52,10 +53,10 @@ namespace LagonaDahab.Web.Controllers
         [HttpPost]
         public IActionResult Update(Villa villa)
         {
-            if (ModelState.IsValid && villa.Id>0)
+            if (ModelState.IsValid && villa.Id > 0)
             {
-                _dbContext.Villas.Update(villa);
-                _dbContext.SaveChanges();
+                _unitOfWork.Villa.Update(villa);
+                _unitOfWork.Villa.SaveChanges();
                 TempData["success"] = "The Villa has been Updated Successfuly";
                 return RedirectToAction(nameof(Index));
             }
@@ -63,7 +64,7 @@ namespace LagonaDahab.Web.Controllers
         }
         public IActionResult Delete(int villaId)
         {
-            Villa? obj = _dbContext.Villas.FirstOrDefault(u => u.Id == villaId);
+            Villa? obj = _unitOfWork.Villa.Get(u => u.Id == villaId);
             if (obj is null)
             {
                 return RedirectToAction("Error", "Home");
@@ -73,23 +74,17 @@ namespace LagonaDahab.Web.Controllers
         [HttpPost]
         public IActionResult Delete(Villa VillaNumberId)
         {
-         Villa? obj = _dbContext.Villas.FirstOrDefault(u => u.Id == VillaNumberId.Id);
+            Villa? obj = _unitOfWork.Villa.Get(u => u.Id == VillaNumberId.Id);
             if (obj is not null)
             {
-                _dbContext.Villas.Remove(obj);
-                _dbContext.SaveChanges();
+                _unitOfWork.Villa.Remove(obj);
+                _unitOfWork.Villa.SaveChanges();
                 TempData["error"] = "The Villa has been deleted Successfuly";
                 return RedirectToAction(nameof(Index));
-                
+
             }
             return View();
         }
 
-
-
-
-
-
     }
 }
- 

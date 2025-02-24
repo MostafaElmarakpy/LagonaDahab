@@ -2,15 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace LagonaDahab.Application.Common.Interfaces
 {
-    public interface IVillaRepository : IGenaricRepository<Villa>
+    public interface IVillaNumberRepository:IGenaricRepository<VillaNumber>
     {
-        void Update(Villa entity);
+        void Update(VillaNumber entity);
         void SaveChanges();
     }
 }

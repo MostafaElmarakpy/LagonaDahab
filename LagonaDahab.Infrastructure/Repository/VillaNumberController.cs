@@ -1,4 +1,4 @@
-﻿using LagonaDahab.Application.Common.Interfaces;
+using LagonaDahab.Application.Common.Interfaces;
 using LagonaDahab.Domain.Entities;
 using LagonaDahab.Infrastructure.Data;
 using LagonaDahab.Web.Models;
@@ -42,9 +42,6 @@ namespace LagonaDahab.Web.Controllers
         public IActionResult Create(VillaNumberViewModel villaNumberVM)
         {
             // Check if the Villa_Number already exists
-            //bool villaNumberExists = _unitOfWork.VillaNumber
-            //    .Any(u => u.Villa_Number == villaNumberVM.VillaNumber.Villa_Number);
-
             bool villaNumberExists = _unitOfWork.VillaNumber.GetAll()
                 .Any(u => u.Villa_Number == villaNumberVM.VillaNumber.Villa_Number);
 
@@ -143,4 +140,3 @@ namespace LagonaDahab.Web.Controllers
         }
     }
 }
- 
