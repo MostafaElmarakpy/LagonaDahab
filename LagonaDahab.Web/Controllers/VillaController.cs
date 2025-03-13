@@ -1,6 +1,7 @@
 ﻿using LagonaDahab.Application.Common.Interfaces;
 using LagonaDahab.Domain.Entities;
 using LagonaDahab.Infrastructure.Data;
+using LagonaDahab.Web.Helper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LagonaDahab.Web.Controllers
@@ -8,10 +9,12 @@ namespace LagonaDahab.Web.Controllers
     public class VillaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public VillaController(IUnitOfWork unitOfWork)
+        public VillaController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -30,10 +33,28 @@ namespace LagonaDahab.Web.Controllers
             {
                 ModelState.AddModelError("name", "the Description can't exactly match Name");
             }
+
             if (ModelState.IsValid)
             {
+                if (villa.Image != null)
+                {
+                    string fileName = Guid.NewGuid() + Path.GetExtension(villa.Image.FileName);
+                    string imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images\VillaImage");
+
+                    using var filestream = new FileStream(Path.Combine(imagePath,fileName), FileMode.Create, FileAccess.Write);
+                    
+                        villa.Image.CopyTo(filestream);
+                    
+                    villa.ImageUrl = @"\images\VillaImage\"+ fileName;
+                }
+                else
+                {
+                    villa.ImageUrl = "https://placehold.co/600x400";
+                }
+
+
                 _unitOfWork.Villa.Add(villa);
-                _unitOfWork.Villa.SaveChanges();
+                _unitOfWork.Save();
                 TempData["success"] = "The Villa has been Created Successfuly";
 
                 return RedirectToAction(nameof(Index));
@@ -55,8 +76,36 @@ namespace LagonaDahab.Web.Controllers
         {
             if (ModelState.IsValid && villa.Id > 0)
             {
+
+
+                if (villa.Image != null)
+                {
+
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(villa.Image.FileName);
+                    string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, @"images\VillaImage");
+
+                    string filePath = Path.Combine(uploadsFolder, fileName);
+
+
+
+                    if (!string.IsNullOrEmpty(villa.ImageUrl))
+                    {
+                        string oldFilePath = Path.Combine(_webHostEnvironment.WebRootPath, villa.ImageUrl.TrimStart('\\'));
+                        if (System.IO.File.Exists(oldFilePath))
+                        {
+                            System.IO.File.Delete(oldFilePath);
+                        }
+                    }
+
+                    using var fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write);
+                    villa.Image.CopyTo(fileStream);
+                    villa.ImageUrl = @"\images\VillaImage\" + fileName;
+                }
+
+
+
                 _unitOfWork.Villa.Update(villa);
-                _unitOfWork.Villa.SaveChanges();
+                _unitOfWork.Save();
                 TempData["success"] = "The Villa has been Updated Successfuly";
                 return RedirectToAction(nameof(Index));
             }
@@ -78,7 +127,7 @@ namespace LagonaDahab.Web.Controllers
             if (obj is not null)
             {
                 _unitOfWork.Villa.Remove(obj);
-                _unitOfWork.Villa.SaveChanges();
+                _unitOfWork.Save();
                 TempData["error"] = "The Villa has been deleted Successfuly";
                 return RedirectToAction(nameof(Index));
 

@@ -38,6 +38,7 @@ namespace LagonaDahab.Infrastructure.Repository
             {
                 query = query.Where(filter);
             }
+
             if (!string.IsNullOrEmpty(includeProperty))
             {
                 foreach (var include in includeProperty.Split([',']

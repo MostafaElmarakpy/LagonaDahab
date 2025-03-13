@@ -22,8 +22,6 @@ namespace LagonaDahab.Infrastructure.Repository
         {
             _dbContext.SaveChanges();
         }
-
-
         public void Update(VillaNumber entity)
         {
             _dbContext.VillaNumbers.Update(entity);

@@ -23,4 +23,8 @@
     <ProjectReference Include="..\LagonaDahab.Infrastructure\LagonaDahab.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\VillaImage\" />
+  </ItemGroup>
+
 </Project>
