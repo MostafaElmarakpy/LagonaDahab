@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using LagonaDahab.Application.Common.Interfaces;
 using LagonaDahab.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,22 +7,31 @@ namespace LagonaDahab.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IUnitOfWork unitOfWork)
         {
-            _logger = logger;
+            _unitOfWork = unitOfWork;
         }
+
 
         public IActionResult Index()
         {
-            return View();
+            HomeViewModel homeView = new()
+            {
+                VillaList = _unitOfWork.Villa.GetAll(includeProperty: "VillaAmenity"),
+                CheckInDate = DateOnly.FromDateTime(DateTime.Now),
+                Nights=1
+            };
+
+            return View(homeView);
         }
 
         public IActionResult Privacy()
         {
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

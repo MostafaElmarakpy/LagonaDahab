@@ -1,0 +1,55 @@
+﻿@model Villa
+
+<div class="p-4 col-md-12 col-lg-6">
+    <div class="row villa-card">
+        <div class="col-4 p-2">
+            <img class="d-block w-100" src="@Model.ImageUrl" alt="@Model.Name">
+        </div>
+        <div class="col-8">
+            <div class="d-flex justify-content-between">
+                <p class="card-title text-warning villa-name">@Model.Name</p>
+                <div class="pt-2">
+                    <button type="button" class="btn btn-sm btn-outline-success"
+                            data-bs-toggle="modal"
+                            data-bs-target="#villaModal-@Model.Id">
+                        Details
+                    </button>
+                </div>
+            </div>
+            <p class="card-text">@Html.Raw(Model.Description)</p>
+        </div>
+        <div class="col-12">
+            <div class="row pb-3 pt-2">
+                <div class="col-4">
+                    <a class="btn btn-success form-control">Book</a>
+                </div>
+                <div class="col-4 villa-info">
+                    <span>Max Occupancy: @Model.Occupancy adults</span><br>
+                    <span>Villa Size: @Model.Sqft sqft</span>
+                </div>
+                <div class="col-4">
+                    <span class="text-warning price-display">
+                        USD <span>@Model.Price.ToString("c")</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="villaModal-@Model.Id" tabindex="-1">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title text-success">Villa Details - @Model.Name</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body m-0">
+                <partial name="_VillaDetail" model="Model" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

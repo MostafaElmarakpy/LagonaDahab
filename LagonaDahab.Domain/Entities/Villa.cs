@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,24 +12,25 @@ namespace LagonaDahab.Domain.Entities
 {
     public class Villa
     {
-        public int Id { get; set; }
 
+        public int Id { get; set; }
         public required string Name { get; set; }
         public string? Description { get; set; }
-
-        [Range (50,1000)]
+        [Range(50, 1000)]
         public double Price { get; set; }
         public int Sqft { get; set; }
 
         [NotMapped]
         public IFormFile? Image { get; set; }
         public int Occupancy { get; set; }
-        [Display(Name= "Image Url")]
+
+        [Display(Name = "Image Url")]
         public string? ImageUrl { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
 
-
+        [ValidateNever]
+        public IEnumerable<Amenity> VillaAmenity { get; set; } = new List<Amenity>();
 
     }
 }

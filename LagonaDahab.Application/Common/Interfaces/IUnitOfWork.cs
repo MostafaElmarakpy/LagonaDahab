@@ -3,13 +3,12 @@ using System.Threading.Tasks;
 
 namespace LagonaDahab.Application.Common.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork
     {
-        //IGenaricRepository<T> Repository<T>() where T : class;
         IVillaRepository Villa { get; }
         IVillaNumberRepository VillaNumber { get; }
+        IAmenityRepository Amenity { get; }
+        void Save();
 
-        Task<int> SaveAsync();
-        int Save();
     }
 }

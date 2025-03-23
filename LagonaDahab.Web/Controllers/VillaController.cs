@@ -123,10 +123,21 @@ namespace LagonaDahab.Web.Controllers
         [HttpPost]
         public IActionResult Delete(Villa VillaNumberId)
         {
-            Villa? obj = _unitOfWork.Villa.Get(u => u.Id == VillaNumberId.Id);
-            if (obj is not null)
+            Villa? villa = _unitOfWork.Villa.Get(u => u.Id == VillaNumberId.Id);
+            if (villa is not null)
             {
-                _unitOfWork.Villa.Remove(obj);
+
+                if (!string.IsNullOrEmpty(villa.ImageUrl))
+                {
+                    string oldFilePath = Path.Combine(_webHostEnvironment.WebRootPath, villa.ImageUrl.TrimStart('\\'));
+                    if (System.IO.File.Exists(oldFilePath))
+                    {
+                        System.IO.File.Delete(oldFilePath);
+                    }
+                }
+
+
+                _unitOfWork.Villa.Remove(villa);
                 _unitOfWork.Save();
                 TempData["error"] = "The Villa has been deleted Successfuly";
                 return RedirectToAction(nameof(Index));

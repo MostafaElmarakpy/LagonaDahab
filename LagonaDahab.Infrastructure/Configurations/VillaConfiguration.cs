@@ -14,6 +14,8 @@ namespace LagonaDahab.Infrastructure.Configurations
         public void Configure(EntityTypeBuilder<Villa> builder)
         {
             builder.Property(v => v.Name).HasMaxLength(100).IsRequired();
+
+
         }
     }
 }

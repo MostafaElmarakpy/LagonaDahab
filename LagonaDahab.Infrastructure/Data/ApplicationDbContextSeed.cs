@@ -31,6 +31,7 @@ namespace LagonaDahab.Infrastructure.Data
                         await context.SaveChangesAsync();
                     }
                 }
+
                 //Seed VillaNumbers
                 if (!context.VillaNumbers.Any())
                 {
@@ -42,6 +43,21 @@ namespace LagonaDahab.Infrastructure.Data
                         foreach (var villaNumber in villaNumbers)
                         {
                             await context.VillaNumbers.AddAsync(villaNumber);
+                        }
+                        await context.SaveChangesAsync();
+                    }
+                }
+
+                //Seed Amenities
+                if (!context.Amenities.Any())
+                {
+                    var amenitiesData = await File.ReadAllTextAsync("../LagonaDahab.Infrastructure/Data/DataSeed/amenity.json");
+                    var amenities = JsonSerializer.Deserialize<List<Amenity>>(amenitiesData);
+                    if (amenities != null)
+                    {
+                        foreach (var amenity in amenities)
+                        {
+                            await context.Amenities.AddAsync(amenity);
                         }
                         await context.SaveChangesAsync();
                     }

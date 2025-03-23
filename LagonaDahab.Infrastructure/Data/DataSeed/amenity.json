@@ -1,0 +1,52 @@
+[
+  {
+    "VillaId": 1,
+    "Name": "Private Infinity Pool",
+    "Description": "Temperature-controlled infinity pool with panoramic views of the Red Sea"
+  },
+  {
+    "VillaId": 1,
+    "Name": "Bedouin Lounge",
+    "Description": "Traditional Bedouin-style seating area with handwoven carpets and cushions"
+  },
+  {
+    "VillaId": 1,
+    "Name": "Coral Reef Access",
+    "Description": "Direct access to house reef for snorkeling with vibrant marine life"
+  },
+  {
+    "VillaId": 1,
+    "Name": "Sunset Deck",
+    "Description": "Private wooden deck with daybeds facing west for golden hour views"
+  },
+  {
+    "VillaId": 2,
+    "Name": "Lagoon Jacuzzi",
+    "Description": "Overwater jacuzzi with glass floor viewing panel for marine observation"
+  },
+  {
+    "VillaId": 2,
+    "Name": "Dive Center Access",
+    "Description": "Complementary equipment storage and dive preparation area"
+  },
+  {
+    "VillaId": 2,
+    "Name": "Sinai Garden",
+    "Description": "Private desert garden with native flora and shaded Bedouin tent"
+  },
+  {
+    "VillaId": 3,
+    "Name": "Star Deck",
+    "Description": "Rooftop observatory with telescope for stargazing in Sinai's clear skies"
+  },
+  {
+    "VillaId": 3,
+    "Name": "Hammam Spa",
+    "Description": "Traditional Moroccan-style steam bath with local Dead Sea products"
+  },
+  {
+    "VillaId": 3,
+    "Name": "Dhow Kitchen",
+    "Description": "Open-air kitchen styled after Red Sea fishing boats for seafood grilling"
+  }
+]
