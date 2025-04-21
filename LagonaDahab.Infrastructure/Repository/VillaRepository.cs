@@ -20,7 +20,6 @@ namespace LagonaDahab.Infrastructure.Repository
             _dbContext = dbContext;
         }
 
-
         public void SaveChanges()
         {
             _dbContext.SaveChanges();

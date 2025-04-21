@@ -30,6 +30,11 @@ namespace LagonaDahab.Domain.Entities
         public DateTime? UpdatedDate { get; set; }
 
         [ValidateNever]
+        //VillaAmenity is a collection of Amenity
+        //benfist of using this is that we can use it to get all the amenities of a villa
+        //and we can use it to get all the villas of an amenity
+        
+
         public IEnumerable<Amenity> VillaAmenity { get; set; } = new List<Amenity>();
 
     }

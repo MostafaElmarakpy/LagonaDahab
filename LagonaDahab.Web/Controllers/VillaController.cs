@@ -1,11 +1,14 @@
 ﻿using LagonaDahab.Application.Common.Interfaces;
+using LagonaDahab.Application.Common.Utility;
 using LagonaDahab.Domain.Entities;
 using LagonaDahab.Infrastructure.Data;
 using LagonaDahab.Web.Helper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LagonaDahab.Web.Controllers
 {
+    [Authorize(Roles = SD.Role_Admin)]
     public class VillaController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

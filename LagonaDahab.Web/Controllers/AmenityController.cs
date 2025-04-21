@@ -1,12 +1,16 @@
 ﻿using LagonaDahab.Application.Common.Interfaces;
+using LagonaDahab.Application.Common.Utility;
 using LagonaDahab.Domain.Entities;
 using LagonaDahab.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace LagonaDahab.Web.Controllers
 {
+    //[Route("Admin/[controller]")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class AmenityController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

@@ -1,4 +1,5 @@
 using LagonaDahab.Application.Common.Interfaces;
+using LagonaDahab.Domain.Entities;
 using LagonaDahab.Infrastructure.Data;
 using LagonaDahab.Infrastructure.Repository;
 using Microsoft.AspNetCore.Identity;
@@ -12,8 +13,29 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Account/Login";
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.LogoutPath = "/Account/Logout";
+});
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.Lockout.MaxFailedAccessAttempts = 5;
+});
+
+builder.Services.AddScoped(typeof(IGenaricRepository<>), typeof(GenaricRepository<>));
 var app = builder.Build();
 
 #region Database Migration and Seeding
@@ -32,9 +54,9 @@ using (var scope = app.Services.CreateScope())
         await context.Database.MigrateAsync();
         await ApplicationDbContextSeed.SeedAsync(context, loggerFactory);
 
-        //var identityContext = services.GetRequiredService<AppIdentityDbContext>();
-        //await identityContext.Database.MigrateAsync();
+     
         //// Seed initial users
+        ///
         //var userManager = services.GetRequiredService<UserManager<AppUser>>();
         //await AppIdentityDbContextSeed.SeedUserAsync(userManager);
 
@@ -69,7 +91,7 @@ app.MapStaticAssets();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Villa}/{action=Index}/{id?}")
+    pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
 

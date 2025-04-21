@@ -1,4 +1,5 @@
 ﻿using LagonaDahab.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LagonaDahab.Infrastructure.Data
 {
-    public class ApplicationDbContext(DbContextOptions options) : DbContext(options)
+    public class ApplicationDbContext(DbContextOptions options) : IdentityDbContext<ApplicationUser>(options)
     {
 
 
@@ -17,12 +18,16 @@ namespace LagonaDahab.Infrastructure.Data
         public DbSet<VillaNumber> VillaNumbers { get; set; }
         public DbSet<Amenity> Amenities { get; set; }
 
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.ApplyConfigurationsFromAssembly(
                 Assembly.GetExecutingAssembly());
-            //base.OnModelCreating(modelBuilder);
+
+            // Configure the Villa entity
             modelBuilder.Entity<Villa>()
                 .Property(v => v.Id)
                 .ValueGeneratedOnAdd();
