@@ -14,7 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(option =>
 option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+ 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -55,7 +55,7 @@ using (var scope = app.Services.CreateScope())
         await ApplicationDbContextSeed.SeedAsync(context, loggerFactory);
 
      
-        //// Seed initial users
+        //// Seed initial users 
         ///
         //var userManager = services.GetRequiredService<UserManager<AppUser>>();
         //await AppIdentityDbContextSeed.SeedUserAsync(userManager);
@@ -71,7 +71,7 @@ using (var scope = app.Services.CreateScope())
 
 #endregion
 
-
+// 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

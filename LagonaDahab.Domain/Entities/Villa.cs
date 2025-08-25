@@ -37,5 +37,9 @@ namespace LagonaDahab.Domain.Entities
 
         public IEnumerable<Amenity> VillaAmenity { get; set; } = new List<Amenity>();
 
+
+        [NotMapped]
+        public bool IsAvailable { get; set; } = true ;
+
     }
 }

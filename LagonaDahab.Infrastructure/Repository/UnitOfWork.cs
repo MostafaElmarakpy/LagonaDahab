@@ -12,6 +12,9 @@ public class UnitOfWork : IUnitOfWork
     private IVillaRepository _villaRepository;
     private IVillaNumberRepository _villaNumberRepository;
     private IAmenityRepository _amenityRepository;
+    private IBookingRepository _bookingRepository;
+    //private IGenaricRepository<TEntity> _genaricRepository;
+
     private Hashtable _Repositories;
 
     public UnitOfWork(ApplicationDbContext context)
@@ -22,6 +25,7 @@ public class UnitOfWork : IUnitOfWork
     public IVillaRepository Villa => _villaRepository ??= new VillaRepository(_dbContext);
     public IVillaNumberRepository VillaNumber => _villaNumberRepository ??= new VillaNumberRepository(_dbContext);
     public IAmenityRepository Amenity => _amenityRepository ??= new AmenityRepository(_dbContext);
+    public IBookingRepository Booking => _bookingRepository ??= new BookingRepository(_dbContext);
 
     //public async Task<int> SaveAsync()
     //{

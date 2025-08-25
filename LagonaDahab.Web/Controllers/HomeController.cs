@@ -27,6 +27,32 @@ namespace LagonaDahab.Web.Controllers
             return View(homeView);
         }
 
+
+        public IActionResult GetVillasByDate(int nights , DateOnly checkInDate)
+        {
+            //Thread.Sleep(2000); // Simulate a delay for demonstration purposes
+
+            var villaList = _unitOfWork.Villa.GetAll(includeProperty: "VillaAmenity").ToList();
+
+            foreach (var villa in villaList)
+            {
+                if (villa.Id % 2 == 0)
+                {
+                    villa.IsAvailable = false;
+                }
+
+            }
+            HomeViewModel homeView = new()
+            {
+                VillaList = villaList,
+                CheckInDate = checkInDate,
+                Nights = nights
+
+            };
+            return PartialView("_VillasList", homeView);
+
+        }
+
         public IActionResult Privacy()
         {
             return View();
