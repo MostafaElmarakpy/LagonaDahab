@@ -32,7 +32,7 @@ namespace LagonaDahab.Domain.Entities
         public string? Phone { get; set; }
 
         [Required]
-        public decimal TotalPrice { get; set; }
+        public double TotalPrice { get; set; }
 
         public int NumberOfNights { get; set; } // e.g., 2 nights
         public string? Status { get; set; } // e.g., "Pending", "Confirmed", "Cancelled"
@@ -41,9 +41,9 @@ namespace LagonaDahab.Domain.Entities
         [Required]
         public DateTime BookingDate { get; set; }
         [Required]
-        public DateTime CheckInDate { get; set; }
+        public DateOnly CheckInDate { get; set; }
         [Required]
-        public DateTime CheckOutDate { get; set; }
+        public DateOnly CheckOutDate { get; set; }
 
         
         public bool IsPaymentSuccessed { get; set; }
