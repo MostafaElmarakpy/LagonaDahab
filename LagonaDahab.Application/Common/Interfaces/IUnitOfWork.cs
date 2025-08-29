@@ -8,6 +8,7 @@ namespace LagonaDahab.Application.Common.Interfaces
         IVillaRepository Villa { get; }
         IVillaNumberRepository VillaNumber { get; }
         IAmenityRepository Amenity { get; }
+        IUserRepository User { get; }
         IBookingRepository Booking { get; }
         void Save();
 
