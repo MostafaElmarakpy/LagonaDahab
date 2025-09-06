@@ -27,7 +27,7 @@ namespace LagonaDahab.Web.Controllers
             return View(homeView);
         }
 
-
+        [HttpPost]
         public IActionResult GetVillasByDate(int nights , DateOnly checkInDate)
         {
             //Thread.Sleep(2000); // Simulate a delay for demonstration purposes

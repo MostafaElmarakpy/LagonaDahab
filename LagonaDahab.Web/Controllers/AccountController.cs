@@ -41,11 +41,6 @@ namespace LagonaDahab.Web.Controllers
 
             return View(model);
         }
-        public async  Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
-        }
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
@@ -90,12 +85,6 @@ namespace LagonaDahab.Web.Controllers
             return View(loginVM);
         }
 
-        public IActionResult AccessDenied()
-        {
-            return View();
-        }
-
-
         public IActionResult Register(string? returnUrl = null)
         {
 
@@ -123,7 +112,6 @@ namespace LagonaDahab.Web.Controllers
             };
             return View(model);
         }
-
 
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel registerVM)
@@ -223,6 +211,16 @@ namespace LagonaDahab.Web.Controllers
                 });
             }
             return View(registerVM);
+        }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+        public async  Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
