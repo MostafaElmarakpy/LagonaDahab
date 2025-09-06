@@ -38,6 +38,9 @@ namespace LagonaDahab.Domain.Entities
         public string? Status { get; set; } // e.g., "Pending", "Confirmed", "Cancelled"
 
 
+   
+
+
         [Required]
         public DateTime BookingDate { get; set; }
         [Required]
@@ -55,6 +58,9 @@ namespace LagonaDahab.Domain.Entities
         public DateTime AcutualCheckOutDate { get; set; }
 
         public int VillaNumber { get; set; } // e.g., 101, 102, etc.
+
+        [NotMapped]
+        public List<VillaNumber> VillaNumbers { get; set; }
 
 
     }
