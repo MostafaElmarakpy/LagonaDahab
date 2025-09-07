@@ -72,7 +72,9 @@ namespace LagonaDahab.Web.Controllers
 
 
             };
-            booking.TotalPrice = booking.Villa.Price * nights;
+            var villa = _unitOfWork.Villa.Get(u => u.Id == booking.villaId);
+            booking.TotalPrice = villa.Price * nights;
+
             return View(booking);
         }
 
@@ -93,7 +95,7 @@ namespace LagonaDahab.Web.Controllers
             booking.BookingDate = DateTime.Now;
 
             _unitOfWork.Booking.Add(booking);
-            //_unitOfWork.Save();
+            _unitOfWork.Save();
 
 
             var domain = Request.Scheme + "://" + Request.Host.Value + "/";
@@ -125,7 +127,7 @@ namespace LagonaDahab.Web.Controllers
             Session session = service.Create(options);
 
             _unitOfWork.Booking.updateStripePaymentId(booking.Id, session.Id, session.PaymentIntentId);
-            _unitOfWork.Booking.UpdateStatus(booking.Id,session.Status);
+            _unitOfWork.Booking.UpdateStatus(booking.Id,session.Status,0);
             _unitOfWork.Save();
 
             Response.Headers.Append("Location", session.Url);
@@ -135,7 +137,7 @@ namespace LagonaDahab.Web.Controllers
 
         }
 
-        [Authorize]
+        [Authorize] 
         public IActionResult BookingConfiermation(int bookingId)
         {
             return View(bookingId);
