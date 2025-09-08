@@ -10,7 +10,7 @@ namespace LagonaDahab.Application.Common.Interfaces
     public interface IBookingRepository : IGenaricRepository<Booking>
     {
         void Update(Booking entity);
-        void UpdateStatus(int bookingId, string bookingStatus);
+        void UpdateStatus(int bookingId, string sessionStatus, int villaNumber);
         void updateStripePaymentId(int bookingId, string sessionId, string paymentIntentId);
     }
 }

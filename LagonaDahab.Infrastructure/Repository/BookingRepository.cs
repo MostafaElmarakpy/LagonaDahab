@@ -30,17 +30,19 @@ namespace LagonaDahab.Infrastructure.Repository
             _dbContext.SaveChanges();
         }
 
-        public void UpdateStatus(int bookingId, string bookingStatus)
+        public void UpdateStatus(int bookingId, string sessionStatus, int villaNumber = 0)
         {
             var bookFromDb = _dbContext.Bookings.FirstOrDefault(m => m.Id== bookingId);
             if (bookFromDb != null)
             {
-                bookFromDb.Status = bookingStatus;
-                if (bookingStatus == SD.StatusPending)
+                bookFromDb.Status = sessionStatus;
+                if (sessionStatus == SD.StatusPending)
                 {
+
+                    bookFromDb.VillaNumber = villaNumber;
                     bookFromDb.AcutualCheckInDate = DateTime.Now;
                 }
-                if (bookingStatus == SD.StatusCompleted)
+                if (sessionStatus == SD.StatusCompleted)
                 {
                     bookFromDb.AcutualCheckOutDate = DateTime.Now;
                 }
@@ -52,6 +54,10 @@ namespace LagonaDahab.Infrastructure.Repository
         public void updateStripePaymentId(int bookingId, string sessionId, string paymentIntentId)
         {
             var bookFromDb = _dbContext.Bookings.FirstOrDefault(m => m.Id == bookingId);
+            if (bookFromDb == null)
+            {
+                throw new ArgumentException($"Booking with ID {bookingId} not found");
+            }
             if (!string.IsNullOrEmpty(sessionId))
             {
                 bookFromDb.StripeSessionId = sessionId;
