@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using LagonaDahab.Application.Common.Interfaces;
+using LagonaDahab.Application.Common.Utility;
 using LagonaDahab.Web.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,15 +34,17 @@ namespace LagonaDahab.Web.Controllers
             //Thread.Sleep(2000); // Simulate a delay for demonstration purposes
 
             var villaList = _unitOfWork.Villa.GetAll(includeProperty: "VillaAmenity").ToList();
+            var villaNumbers = _unitOfWork.VillaNumber.GetAll().ToList();
+
+            var bookings = _unitOfWork.Booking.GetAll(u=> u.Status==SD.StatusApproved || u.Status == SD.StatusCheckedIn).ToList();
+
 
             foreach (var villa in villaList)
             {
-                if (villa.Id % 2 == 0)
-                {
-                    villa.IsAvailable = false;
-                }
-
+                 int availableRooms = SD.VillaRoomsAvailable_Count(villa.Id, villaNumbers, checkInDate, nights, bookings);
+                villa.IsAvailable = availableRooms > 0 ? true : false;
             }
+
             HomeViewModel homeView = new()
             {
                 VillaList = villaList,

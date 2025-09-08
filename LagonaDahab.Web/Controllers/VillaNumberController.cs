@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LagonaDahab.Web.Controllers
 {
+    [Authorize]
     public class VillaNumberController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
