@@ -48,20 +48,28 @@ namespace LagonaDahab.Web.Controllers
 
 
         [Authorize]
+        [Authorize]
         public IActionResult FinalieBooking(int villaId, int nights, DateOnly checkInDate)
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
-
             var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
+            var villa = _unitOfWork.Villa.Get(u => u.Id == villaId, includeProperty: "VillaAmenity");
+            if (villa == null)
+            {
+                return NotFound("Villa not found");
+            }
+
             ApplicationUser user = _unitOfWork.User.Get(u => u.Id == userId);
+            if (user == null)
+            {
+                return NotFound("User not found");
+            }
 
             Booking booking = new Booking()
             {
-                //UserId = User.FindFirstValue(ClaimTypes.NameIdentifier),
                 villaId = villaId,
-
-                Villa = _unitOfWork.Villa.Get(u => u.Id == villaId, includeProperty: "VillaAmenity"),
+                Villa = villa,
                 CheckInDate = checkInDate,
                 NumberOfNights = nights,
                 CheckOutDate = checkInDate.AddDays(nights),
@@ -70,9 +78,8 @@ namespace LagonaDahab.Web.Controllers
                 Email = user.Email,
                 Name = user.Name,
 
-
             };
-            var villa = _unitOfWork.Villa.Get(u => u.Id == booking.villaId);
+
             booking.TotalPrice = villa.Price * nights;
 
             return View(booking);
@@ -80,62 +87,69 @@ namespace LagonaDahab.Web.Controllers
 
         [Authorize]
         [HttpPost]
+     
         public IActionResult FinalieBooking(Booking booking)
         {
             var claimsIdentity = (ClaimsIdentity)User.Identity;
-
             var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             var villa = _unitOfWork.Villa.Get(u => u.Id == booking.villaId);
+            if (villa == null)
+            {
+                return NotFound("Villa not found");
+            }
 
+            // Calculate the correct total price
             booking.TotalPrice = booking.NumberOfNights * villa.Price;
-            booking.TotalPrice = booking.VillaNumber;
+            // Remove this line as it's incorrect:
+            // booking.TotalPrice = booking.VillaNumber;
+
             booking.UserId = userId;
             booking.Status = SD.StatusPending;
             booking.BookingDate = DateTime.Now;
+            booking.AcutualCheckInDate = DateTime.MinValue; 
+            booking.AcutualCheckOutDate = DateTime.MinValue;
 
             _unitOfWork.Booking.Add(booking);
             _unitOfWork.Save();
 
-
             var domain = Request.Scheme + "://" + Request.Host.Value + "/";
             var options = new SessionCreateOptions
             {
-                LineItems = new List<SessionLineItemOptions>(){},
+                LineItems = new List<SessionLineItemOptions>(),
                 Mode = "payment",
                 SuccessUrl = domain + $"Booking/BookingConfiermation?bookingId={booking.Id}",
-                CancelUrl = domain + $"Booking/FinalieBooking?bookingId={booking.villaId}&nights={booking.NumberOfNights}&checkInDate={booking.CheckInDate}",
+                CancelUrl = domain + $"Booking/FinalieBooking?villaId={booking.villaId}&nights={booking.NumberOfNights}&checkInDate={booking.CheckInDate}",
             };
-            // 
+
+            // Make sure the price is correctly passed to Stripe
+            var stripeAmount = (long)(booking.TotalPrice * 100);
             options.LineItems.Add(new SessionLineItemOptions
             {
                 PriceData = new SessionLineItemPriceDataOptions
                 {
-                    UnitAmount = (long)(booking.TotalPrice * 100),
+                    UnitAmount = stripeAmount,
                     Currency = "egp",
                     ProductData = new SessionLineItemPriceDataProductDataOptions
                     {
                         Name = villa.Name,
-                        //Images = new List<string> {domain +villa.Image }
                     }
                 },
                 Quantity = 1,
             });
 
-
             var service = new SessionService();
             Session session = service.Create(options);
 
             _unitOfWork.Booking.updateStripePaymentId(booking.Id, session.Id, session.PaymentIntentId);
-            _unitOfWork.Booking.UpdateStatus(booking.Id,session.Status,0);
+            _unitOfWork.Booking.UpdateStatus(booking.Id, session.Status, 0);
             _unitOfWork.Save();
 
-            Response.Headers.Append("Location", session.Url);
-
+            Response.Headers.Add("Location", session.Url);
             return new StatusCodeResult(303);
-
-
         }
+
+
 
         [Authorize] 
         public IActionResult BookingConfiermation(int bookingId)
@@ -150,6 +164,52 @@ namespace LagonaDahab.Web.Controllers
             var booking = _unitOfWork.Booking.Get(u => u.Id == bookingId, includeProperty: "Villa,User");
             return View(booking);
         }
+
+
+        [HttpPost]
+        [Authorize(Roles = SD.Role_Admin)]
+        public IActionResult CheckIn(Booking booking)
+        {
+            //_bookingService.UpdateStatus(booking.Id, SD.StatusCheckedIn, booking.VillaNumber);
+            TempData["Success"] = "Booking Updated Successfully.";
+            return RedirectToAction(nameof(BookingDetails), new { bookingId = booking.Id });
+        }
+
+        [HttpPost]
+        [Authorize(Roles = SD.Role_Admin)]
+        public IActionResult CheckOut(Booking booking)
+        {
+            //_bookingService.UpdateStatus(booking.Id, SD.StatusCompleted, booking.VillaNumber);
+            TempData["Success"] = "Booking Completed Successfully.";
+            return RedirectToAction(nameof(BookingDetails), new { bookingId = booking.Id });
+        }
+
+        [HttpPost]
+        [Authorize(Roles = SD.Role_Admin)]
+        public IActionResult CancelBooking(Booking booking)
+        {
+            //_bookingService.UpdateStatus(booking.Id, SD.StatusCancelled, 0);
+            TempData["Success"] = "Booking Cancelled Successfully.";
+            return RedirectToAction(nameof(BookingDetails), new { bookingId = booking.Id });
+        }
+
+        //private List<int> AssignAvailableVillaNumberByVilla(int villaId)
+        //{
+        //    List<int> availableVillaNumbers = new();
+
+        //    var villaNumbers = _villaNumberService.GetAllVillaNumbers().Where(u => u.VillaId == villaId);
+
+        //    var checkedInVilla = _bookingService.GetCheckedInVillaNumbers(villaId);
+
+        //    foreach (var villaNumber in villaNumbers)
+        //    {
+        //        if (!checkedInVilla.Contains(villaNumber.Villa_Number))
+        //        {
+        //            availableVillaNumbers.Add(villaNumber.Villa_Number);
+        //        }
+        //    }
+        //    return availableVillaNumbers;
+        //}
 
 
     }
